@@ -19,4 +19,46 @@ export const createClientsSection = () => {
   const tbody = document.createElement('tbody')
   const createSpan = document.createElement('span')
   const editSpan = document.createElement('span')
+
+  section.classList.add('clients')
+  tableWrapper.classList.add('clients__wrapper')
+  h1.classList.add('clients__heading')
+  tbody.classList.add('clients__tbody')
+  sortingDisplay.classList.add('clients__display', 'display-info')
+  sortingDisplayId.classList.add(
+    'display-info__item',
+    'display-info__item--id',
+    'sort-up'
+  )
+  sortingDisplayName.classList.add(
+    'display-info__item',
+    'display-info__item--name',
+    'sort-down'
+  )
+  sortingDisplayCreate.classList.add(
+    'display-info__item',
+    'display-info__item--create',
+    'sort-down'
+  )
+  sortingDisplayEdit.classList.add(
+    'display-info__item',
+    'display-info__item--change',
+    'sort-down'
+  )
+  sortingDisplayContacts.classList.add(
+    'display-info__item',
+    'display-info__item--contacts'
+  )
+  sortingDisplayActions.classList.add(
+    'display-info__item',
+    'display-info__item--actions'
+  )
+  sortingDisplaySpan.classList.add('display-info__sorting')
+  addUserBtn.classList.add('clients__btn', 'btn-reset')
+  addUserBtnSvg.classList.add('clients__svg')
+  container.classList.add('container', 'clients__container')
+  clientsTable.classList.add('clients__table')
+  main.classList.add('main')
+  createSpan.classList.add('create__span')
+  editSpan.classList.add('change__span')
 }
