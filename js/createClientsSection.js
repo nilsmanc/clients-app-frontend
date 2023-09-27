@@ -1,3 +1,5 @@
+import { svgAddUser } from './svg.js'
+
 export const createClientsSection = () => {
   const section = document.createElement('section')
   const h1 = document.createElement('h1')
@@ -61,4 +63,40 @@ export const createClientsSection = () => {
   main.classList.add('main')
   createSpan.classList.add('create__span')
   editSpan.classList.add('change__span')
+
+  h1.textContent = 'Clients'
+  sortingDisplayId.textContent = 'id'
+  sortingDisplayName.textContent = 'Name Surname Patronymic'
+  sortingDisplaySpan.textContent = 'а-z'
+  sortingDisplayCreate.textContent = 'Date and time '
+  sortingDisplayEdit.textContent = 'Last '
+  sortingDisplayContacts.textContent = 'Contacts '
+  sortingDisplayActions.textContent = 'Actions '
+  addUserBtn.textContent = 'Add client'
+  addUserBtnSvg.innerHTML = svgAddUser
+
+  main.append(section)
+  section.append(container)
+  sortingDisplayName.appendChild(sortingDisplaySpan)
+  sortingDisplayCreate.append(createSpan)
+  sortingDisplayEdit.append(editSpan)
+  theadTr.append(
+    sortingDisplayId,
+    sortingDisplayName,
+    sortingDisplayCreate,
+    sortingDisplayEdit,
+    sortingDisplayContacts,
+    sortingDisplayActions
+  )
+  sortingDisplay.append(theadTr)
+  tableWrapper.append(clientsTable)
+  clientsTable.append(sortingDisplay, tbody)
+  addUserBtn.append(addUserBtnSvg)
+  container.append(h1, tableWrapper, addUserBtn)
+
+  return {
+    main,
+    clientsTable,
+    tbody,
+  }
 }
