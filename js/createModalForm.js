@@ -94,6 +94,16 @@ export const createClientsForm = () => {
 
   addContactBtn.append(contactBtnSvgDefault, contactBtnSvgHover)
 
+  addContactBtn.addEventListener('mousemove', () => {
+    contactBtnSvgDefault.classList.remove('btn-contact__svg--active')
+    contactBtnSvgHover.classList.add('btn-contact__svg--active')
+  })
+
+  addContactBtn.addEventListener('mouseleave', () => {
+    contactBtnSvgDefault.classList.add('btn-contact__svg--active')
+    contactBtnSvgHover.classList.remove('btn-contact__svg--active')
+  })
+
   return {
     form,
     modalClose,
