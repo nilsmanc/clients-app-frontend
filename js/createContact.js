@@ -1,3 +1,5 @@
+import { svgDelete } from './svg.js'
+
 export const createContactItem = () => {
   const contact = document.createElement('div')
   const contactType = document.createElement('div')
@@ -24,4 +26,33 @@ export const createContactItem = () => {
   contactOther.classList.add('contact__item')
   contactInput.classList.add('contact__input')
   contactDelete.classList.add('contact__delete')
+
+  contactName.textContent = 'Telephone number'
+  contactDeleteTooltip.textContent = 'Delete contact'
+  contactPhone.textContent = 'Telephone number'
+  contactVk.textContent = 'VK'
+  contactEmail.textContent = 'Email'
+  contactFb.textContent = 'Facebook'
+  contactOther.textContent = 'Other'
+  contactInput.placeholder = 'Enter contact information'
+  contactInput.type = 'text'
+  contactDelete.innerHTML = svgDelete
+
+  contactDelete.append(contactDeleteTooltip)
+  contact.append(contactType, contactInput, contactDelete)
+  contactType.append(contactName, contactList)
+  contactList.append(
+    contactPhone,
+    contactEmail,
+    contactVk,
+    contactFb,
+    contactOther
+  )
+
+  return {
+    contact,
+    contactName,
+    contactInput,
+    contactDelete,
+  }
 }
