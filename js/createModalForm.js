@@ -94,6 +94,21 @@ export const createClientsForm = () => {
 
   addContactBtn.append(contactBtnSvgDefault, contactBtnSvgHover)
 
+  addContactBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    const contactsItems = document.getElementsByClassName('contact')
+
+    if (contactsItems.length < 9) {
+      const contactItem = createContactItem()
+      contactsBlock.prepend(contactItem.contact)
+      contactsBlock.style.backgroundColor = 'var(--color-athens-gray)'
+    } else {
+      const contactItem = createContactItem()
+      contactsBlock.prepend(contactItem.contact)
+      addContactBtn.classList.remove('modal__btn-contact--active')
+    }
+  })
+
   addContactBtn.addEventListener('mousemove', () => {
     contactBtnSvgDefault.classList.remove('btn-contact__svg--active')
     contactBtnSvgHover.classList.add('btn-contact__svg--active')

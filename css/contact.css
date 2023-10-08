@@ -1,0 +1,48 @@
+.contact {
+  display: flex;
+  align-items: center;
+  width: 390px;
+  margin-bottom: 25px;
+}
+
+.contact__type {
+  position: relative;
+}
+
+.contact__name {
+  height: 37px;
+  z-index: 1;
+  max-width: 134px;
+  min-width: 134px;
+  position: relative;
+  padding: 10px 12px;
+  padding-right: 60px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  border: 1px solid var(--color-silver-chalice);
+  background-color: var(--color-mischka);
+  color: var(--color-black3);
+}
+
+.contact__name::before {
+  content: '';
+  position: absolute;
+  right: 15px;
+  top: 13px;
+  width: 10px;
+  height: 10px;
+  background-image: url('../img/contact-arrow.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.contact__name:hover {
+  background-color: var(--color-gary-suit);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.contact__name:active {
+  background-color: var(--color-mischka);
+  transition: background-color 0.3s ease-in-out;
+}
