@@ -46,3 +46,42 @@
   background-color: var(--color-mischka);
   transition: background-color 0.3s ease-in-out;
 }
+
+.contact__list--active.contact__name::before {
+  transform: rotate(-180deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.contact__list {
+  z-index: 2;
+  position: absolute;
+  font-size: 12px;
+  padding: 10px 0 6px;
+  width: 100%;
+  max-width: 134px;
+  min-width: 134px;
+  top: 36px;
+  left: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  background-color: var(--color-athens-gray);
+  border: 1px solid var(--color-gary-suit);
+}
+
+.contact__list.contact__list--active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.contact__item {
+  cursor: pointer;
+  padding-top: 4px;
+  border-bottom: 7px;
+  padding-left: 12px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.contact__item:hover {
+  transition: background-color 0.3s ease-in-out;
+  background-color: var(--color-mischka);
+}
