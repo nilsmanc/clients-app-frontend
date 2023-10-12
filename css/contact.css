@@ -93,9 +93,9 @@
   display: block;
   border: 1px solid var(--color-silver-chalice);
   border-left: none;
+  border-right: none;
   background-color: transparent;
 }
-
 .contact__delete {
   display: flex;
   cursor: pointer;

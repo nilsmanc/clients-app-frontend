@@ -38,6 +38,14 @@ export const createContactItem = () => {
   contactInput.type = 'text'
   contactDelete.innerHTML = svgDelete
 
+  contactDelete.addEventListener('click', (e) => {
+    e.preventDefault()
+    contact.remove()
+    document
+      .querySelector('.modal__btn-contact')
+      .classList.add('modal__btn-contact--active')
+  })
+
   contactDelete.append(contactDeleteTooltip)
   contact.append(contactType, contactInput, contactDelete)
   contactType.append(contactName, contactList)
