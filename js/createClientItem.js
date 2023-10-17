@@ -1,3 +1,5 @@
+import { formatDate, formatTime } from './utils.js'
+
 export const createClientItem = (data) => {
   const clientTr = document.createElement('tr')
   const clientId = document.createElement('span')
@@ -41,6 +43,10 @@ export const createClientItem = (data) => {
   clientLastName.textContent = data.lastName
   clientEdit.textContent = 'Edit'
   clientDelete.textContent = 'Delete'
+  createDate.textContent = formatDate(data.createdAt)
+  createdTime.textContent = formatTime(data.createdAt)
+  changedDate.textContent = formatDate(data.updatedAt)
+  changedTime.textContent = formatTime(data.updatedAt)
 
   clientFullName.append(clientName, clientSurname, clientLastName)
   clientCreated.append(createDate, createdTime)
