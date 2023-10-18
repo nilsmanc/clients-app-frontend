@@ -37,6 +37,10 @@ export const createClientItem = (data) => {
   clientDelete.classList.add('clients__delete', 'btn-reset')
   clientEdit.classList.add('clients__edit', 'btn-reset')
 
+  for (const contact of data.contacts) {
+    createContactItemByType(contact.type, contact.value, clientContacts)
+  }
+
   clientId.textContent = data.id.substr(0, 6)
   clientName.textContent = data.name
   clientSurname.textContent = data.surname
