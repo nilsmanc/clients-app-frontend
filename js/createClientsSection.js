@@ -75,6 +75,10 @@ export const createClientsSection = () => {
   addUserBtn.textContent = 'Add client'
   addUserBtnSvg.innerHTML = svgAddUser
 
+  addUserBtn.addEventListener('click', () => {
+    document.body.append(addClientModal())
+  })
+
   main.append(section)
   section.append(container)
   sortingDisplayName.appendChild(sortingDisplaySpan)
