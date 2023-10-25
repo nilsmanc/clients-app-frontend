@@ -22,6 +22,15 @@ export const createClientsForm = () => {
   const formFloatingSurname = document.createElement('div')
   const formFloatingLastName = document.createElement('div')
 
+  const errorBlock = document.createElement('p')
+  const unacceptableLetter = document.createElement('span')
+  const writeName = document.createElement('span')
+  const writeSurname = document.createElement('span')
+  const writeLastName = document.createElement('span')
+  const requiredValue = document.createElement('span')
+  const requiredContacts = document.createElement('span')
+
+  saveSpinner.classList.add('modal__spinner')
   modalTitle.classList.add('modal__title')
   modalClose.classList.add('modal__close', 'btn-reset')
   form.classList.add('modal__form')
@@ -65,10 +74,18 @@ export const createClientsForm = () => {
   inputSurname.placeholder = 'Surname'
   inputLastName.placeholder = 'Patronymic'
 
+  errorBlock.classList.add('modal__error')
+  unacceptableLetter.id = 'unacceptableLetter'
+  writeName.id = 'writeName'
+  writeSurname.id = 'writeSurname'
+  writeLastName.id = 'writeLastName'
+  requiredValue.id = 'requiredValue'
+  requiredContacts.id = 'requiredContacts'
+
   modalTitle.textContent = 'New client'
   labelName.textContent = 'Name'
   labelSurname.textContent = 'Surname'
-  labelLastName.textContent = 'Patronymic'
+  labelLastName.textContent = 'Last name'
   addContactBtn.textContent = 'Add contact'
   saveBtn.textContent = 'Save'
   cancelBtn.textContent = 'Cancel'
@@ -83,6 +100,14 @@ export const createClientsForm = () => {
   formFloatingSurname.append(inputName, labelSurname)
   formFloatingLastName.append(inputLastName, labelLastName)
   contactsBlock.append(addContactBtn)
+  errorBlock.append(
+    writeName,
+    writeSurname,
+    writeLastName,
+    requiredValue,
+    unacceptableLetter,
+    requiredContacts
+  )
   form.append(
     formFloatingName,
     formFloatingSurname,
