@@ -50,6 +50,7 @@ export const createClientItem = (data) => {
       deleteClient.deleteModalDelete.addEventListener('click', () => {
         deleteClientItem(data.id)
         document.getElementById(data.id).remove()
+        deleteClient.deleteModal.remove()
       })
     })
   }
