@@ -21,6 +21,7 @@ export const createClientsForm = () => {
   const formFloatingName = document.createElement('div')
   const formFloatingSurname = document.createElement('div')
   const formFloatingLastName = document.createElement('div')
+  const saveSpinner = document.createElement('span')
 
   const errorBlock = document.createElement('p')
   const unacceptableLetter = document.createElement('span')
@@ -72,7 +73,7 @@ export const createClientsForm = () => {
   inputLastName.type = 'text'
   inputName.placeholder = 'Name'
   inputSurname.placeholder = 'Surname'
-  inputLastName.placeholder = 'Patronymic'
+  inputLastName.placeholder = 'Last name'
 
   errorBlock.classList.add('modal__error')
   unacceptableLetter.id = 'unacceptableLetter'
@@ -82,6 +83,7 @@ export const createClientsForm = () => {
   requiredValue.id = 'requiredValue'
   requiredContacts.id = 'requiredContacts'
 
+  saveSpinner.innerHTML = svgSpinner
   modalTitle.textContent = 'New client'
   labelName.textContent = 'Name'
   labelSurname.textContent = 'Surname'
@@ -95,9 +97,10 @@ export const createClientsForm = () => {
   contactBtnSvgHover.innerHTML = svgContactHover
 
   labelName.append(requiredName)
+  saveBtn.append(saveSpinner)
   labelSurname.append(requiredSurname)
   formFloatingName.append(inputName, labelName)
-  formFloatingSurname.append(inputName, labelSurname)
+  formFloatingSurname.append(inputSurname, labelSurname)
   formFloatingLastName.append(inputLastName, labelLastName)
   contactsBlock.append(addContactBtn)
   errorBlock.append(
@@ -113,6 +116,7 @@ export const createClientsForm = () => {
     formFloatingSurname,
     formFloatingLastName,
     contactsBlock,
+    errorBlock,
     saveBtn,
     cancelBtn
   )
@@ -128,9 +132,9 @@ export const createClientsForm = () => {
       contactsBlock.prepend(contactItem.contact)
       contactsBlock.style.backgroundColor = 'var(--color-athens-gray)'
       if (contactsItems.length >= 5) {
-        document.querySelector('.modal__content').style.top = '70%'
+        document.querySelector('.site-modal__content').style.top = '70%'
       } else {
-        document.querySelector('.modal__content').style.top = '50%'
+        document.querySelector('.site-modal__content').style.top = '50%'
       }
     } else {
       const contactItem = createContactItem()
