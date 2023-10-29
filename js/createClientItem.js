@@ -1,9 +1,11 @@
 import { deleteClientModal } from './createDeleteModal.js'
 import { editClientModal } from './editClient.js'
+import { svgSpinner } from './svg.js'
 import { createContactItemByType, formatDate, formatTime } from './utils.js'
 
 export const createClientItem = (data) => {
   const clientTr = document.createElement('tr')
+  const clientIdTd = document.createElement('td')
   const clientId = document.createElement('span')
   const clientFullName = document.createElement('td')
   const clientName = document.createElement('span')
@@ -21,10 +23,14 @@ export const createClientItem = (data) => {
   const clientDelete = document.createElement('button')
   const deleteClient = deleteClientModal()
   const editClient = editClientModal(data)
+  const editSpinner = document.createElement('span')
+  const deleteSpinner = document.createElement('span')
 
+  editSpinner.classList.add('actions__spinner')
+  deleteSpinner.classList.add('actions__spinner')
   clientTr.classList.add('clients__item')
   clientTr.id = data.id
-  clientId.classList.add('client__id')
+  clientIdTd.classList.add('client__id')
   clientFullName.classList.add('clients__full-name')
   clientName.classList.add('clients__name')
   clientSurname.classList.add('clients__surname')
@@ -48,23 +54,54 @@ export const createClientItem = (data) => {
   const deleteById = () => {
     import('./clientsApi.js').then(({ deleteClientItem }) => {
       deleteClient.deleteModalDelete.addEventListener('click', () => {
-        deleteClientItem(data.id)
-        document.getElementById(data.id).remove()
-        deleteClient.deleteModal.remove()
+        try {
+          deleteClient.deleteSpinner.style.display = 'block'
+
+          setTimeout(() => {
+            deleteClientItem(data.id)
+            document.getElementById(data.id).remove()
+            deleteClient.deleteModal.remove()
+          }, 1500)
+        } catch (error) {
+          console.log(error)
+        } finally {
+          setTimeout(
+            () => (deleteClient.deleteSpinner.style.display = 'none'),
+            1500
+          )
+        }
       })
     })
   }
 
   clientDelete.addEventListener('click', () => {
-    deleteById()
-    document.body.append(deleteClient.deleteModal)
+    deleteSpinner.style.display = 'block'
+    clientDelete.classList.add('action-wait')
+
+    setTimeout(() => {
+      deleteById()
+      document.body.append(deleteClient.deleteModal)
+
+      deleteSpinner.style.display = 'none'
+      clientDelete.classList.remove('action-wait')
+    }, 1500)
   })
 
   clientEdit.addEventListener('click', () => {
-    document.body.append(editClient.editModal)
+    editSpinner.style.display = 'block'
+    clientEdit.classList.add('action-wait')
+
+    setTimeout(() => {
+      document.body.append(editClient.editModal)
+
+      editSpinner.style.display = 'none'
+      clientEdit.classList.remove('action-wait')
+    }, 1500)
   })
 
-  clientId.textContent = data.id.substr(0, 6)
+  deleteSpinner.innerHTML = svgSpinner
+  editSpinner.innerHTML = svgSpinner
+  clientId.textContent = Math.floor(Math.random() * 15)
   clientName.textContent = data.name
   clientSurname.textContent = data.surname
   clientLastName.textContent = data.lastName
@@ -75,12 +112,15 @@ export const createClientItem = (data) => {
   changedDate.textContent = formatDate(data.updatedAt)
   changedTime.textContent = formatTime(data.updatedAt)
 
+  clientIdTd.append(clientId)
   clientFullName.append(clientName, clientSurname, clientLastName)
   clientCreated.append(createDate, createdTime)
   clientChanged.append(changedDate, changedTime)
+  clientDelete.append(deleteSpinner)
+  clientEdit.append(editSpinner)
   clientActions.append(clientEdit, clientDelete)
   clientTr.append(
-    clientId,
+    clientIdTd,
     clientFullName,
     clientCreated,
     clientChanged,
