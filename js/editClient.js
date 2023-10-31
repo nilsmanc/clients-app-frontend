@@ -21,8 +21,8 @@ export const editClientModal = (data) => {
   )
 
   titleId.textContent = 'ID: ' + data.id.substr(0, 6)
-  createForm.modalTitle.textContent = 'Изменить данные'
-  createForm.cancelBtn.textContent = 'Удалить клиента'
+  createForm.modalTitle.textContent = 'Edit'
+  createForm.cancelBtn.textContent = 'Delete'
 
   createForm.cancelBtn.addEventListener('click', (e) => {
     e.preventDefault()
