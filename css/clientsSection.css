@@ -68,7 +68,7 @@
 }
 
 .display-info__item--create::before {
-  content: 'создания';
+  content: 'creation';
   position: absolute;
   right: 0;
   top: 1px;
@@ -83,7 +83,7 @@
 }
 
 .display-info__item--change::before {
-  content: 'изменения';
+  content: 'modification';
   position: absolute;
   right: 0;
   top: 1px;
