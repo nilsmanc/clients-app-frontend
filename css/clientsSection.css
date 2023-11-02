@@ -26,6 +26,7 @@
 }
 
 .display-info__item {
+  font-weight: 400;
   font-size: 12px;
   color: var(--color-silver-chalice);
 }
@@ -67,7 +68,7 @@
 }
 
 .display-info__item--create::before {
-  content: 'creation';
+  content: 'создания';
   position: absolute;
   right: 0;
   top: 1px;
@@ -82,7 +83,7 @@
 }
 
 .display-info__item--change::before {
-  content: 'modification';
+  content: 'изменения';
   position: absolute;
   right: 0;
   top: 1px;
@@ -114,6 +115,10 @@
   margin-right: 10px;
   transition: fill 0.3s ease-in-out;
   fill: var(--color-emerald);
+}
+
+.clients__tbody {
+  position: relative;
 }
 
 .clients__btn:hover {
