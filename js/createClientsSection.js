@@ -116,7 +116,6 @@ export const createClientsSection = () => {
   sortingDisplayActions.textContent = 'Actions '
   addUserBtn.textContent = 'Add client'
   addUserBtnSvg.innerHTML = svgAddUser
-
   addUserBtn.addEventListener('click', () => {
     document.body.append(addClientModal())
   })
@@ -135,9 +134,8 @@ export const createClientsSection = () => {
     sortingDisplayActions
   )
   sortingDisplay.append(theadTr)
-  tableWrapper.append(clientsTable)
+  tableWrapper.append(clientsTable, createPreloader())
   clientsTable.append(sortingDisplay, tbody)
-  tbody.append(createPreloader())
   addUserBtn.append(addUserBtnSvg)
   container.append(h1, tableWrapper, addUserBtn)
 
