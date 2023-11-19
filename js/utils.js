@@ -1,3 +1,4 @@
+import { contactTooltip } from './createTooltip.js'
 import { svgPhone, svgFb, svgVk, svgEmail, svgOther } from './svg.js'
 
 export const createContactLink = (type, value, element, svg, item) => {

@@ -1,4 +1,5 @@
-import { svgContactDefault, svgContactHover } from './svg.js'
+import { createContactItem } from './createContact.js'
+import { svgContactDefault, svgContactHover, svgSpinner } from './svg.js'
 
 export const createClientsForm = () => {
   const modalTitle = document.createElement('h2')

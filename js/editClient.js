@@ -20,7 +20,7 @@ export const editClientModal = (data) => {
     'modal-active'
   )
 
-  titleId.textContent = 'ID: ' + data.id.substr(0, 6)
+  titleId.textContent = 'ID: ' + data._id.substr(0, 6)
   createForm.modalTitle.textContent = 'Edit'
   createForm.cancelBtn.textContent = 'Delete'
 
@@ -36,8 +36,8 @@ export const editClientModal = (data) => {
           deleteModal.deleteSpinner.style.display = 'block'
 
           setTimeout(() => {
-            deleteClientItem(data.id)
-            document.getElementById(data.id).remove()
+            deleteClientItem(data._id)
+            document.getElementById(data._id).remove()
             deleteModal.deleteModal.remove()
             editModal.remove()
           }, 1500)
@@ -105,18 +105,18 @@ export const editClientModal = (data) => {
 
     try {
       spinner.style.display = 'block'
-      const editedData = await sendClientData(client, 'PATCH', data.id)
-      setTimeout(() => {
-        document.getElementById(editedData.id).remove()
-        document
-          .querySelector('.clients__tbody')
-          .append(createClientItem(editedData))
-        editModal.remove()
-      }, 1500)
+      const editedData = await sendClientData(client, 'PATCH', data._id)
+      document
+        .querySelector('.clients__tbody')
+        .replaceChild(
+          createClientItem(editedData),
+          document.getElementById(editedData._id)
+        )
+      editModal.remove()
     } catch (error) {
       console.log(error)
     } finally {
-      setTimeout(() => (spinner.style.display = 'block'), 1500)
+      spinner.style.display = 'none'
     }
   })
 
